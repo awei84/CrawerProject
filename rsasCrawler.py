@@ -68,9 +68,8 @@ def crawer_vuln(file_path, vuln_num_min, vuln_num_max):
                 res["危险等级"] = "低危"
             elif 4 <= float(Threat_score) < 7:
                 res["危险等级"] = "中危"
-            if float(Threat_score) >= 7:
+            elif float(Threat_score) >= 7:
                 res["危险等级"] = "高危"
-
             # 危险插件
             res["危险插件"] = t_body.find_all("tr")[3].find("td").text.strip()
             # print(f'危险插件：{res["危险插件"]}')
@@ -93,15 +92,13 @@ def crawer_vuln(file_path, vuln_num_min, vuln_num_max):
             # 威胁分值
             # Threat_score = t_body.find_all("tr")[3].find("td").text.strip()
             res["威胁分值"] = Threat_score
-            print(f"威胁分值：{Threat_score}")
-
+            # print(f"威胁分值：{Threat_score}")
             if float(Threat_score) < 4:
                 res["危险等级"] = "低危"
             elif 4 <= float(Threat_score) < 7:
                 res["危险等级"] = "中危"
-            if float(Threat_score) >= 7:
+            elif float(Threat_score) >= 7:
                 res["危险等级"] = "高危"
-
             # 危险插件
             res["危险插件"] = t_body.find_all("tr")[4].find("td").text.strip()
             # print(f'危险插件：{res["危险插件"]}')
@@ -168,11 +165,12 @@ def save_excel(data):
 
 
 def save_json(data):
-    data_j = json.dumps(data,indent=4)
-    with open(r"C:\Users\59287\Desktop\绿盟插件表\vuln.json","w") as f:
+    data_j = json.dumps(data, indent=4)
+    with open(r"C:\Users\59287\Desktop\绿盟插件表\vuln.json", "w") as f:
         f.write(data_j)
 
+
 file_path = "D:\Download\多任务输出_2022_01_25_html\index.html"
-data = crawer_vuln(file_path, "1", "2298") # 第1条到2298条
+data = crawer_vuln(file_path, "1", "2298")  # 第1条到2298条
 save_json(data)
 save_excel(data)

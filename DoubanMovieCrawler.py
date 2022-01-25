@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 """
 @Author: awei84    
-@Contact: 592879940@qq.com   
+@Contact:  
 @Modify_Time: 2022/1/17 14:47       
 @Desciption: 豆瓣电影分类排行榜查询
 """
